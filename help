@@ -1,9 +1,0 @@
-from pathlib import Path
-import csv
-
-def read_profit_loss_data(file_path):
-    """
-    Reads the CSV file containing profit and loss data.
-    Returns a list of tuples where each tuple contains the day and net profit difference.
-    """
-    profit_loss_data = []

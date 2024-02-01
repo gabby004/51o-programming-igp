@@ -12,3 +12,16 @@ def read_profit_loss_data(file_path):
         reader = csv.reader(file)
         next(reader)  # Skip header
 
+        prev_net_profit = None
+        for row in reader:
+            day = int(row[0])
+            net_profit = int(row[4])
+
+            if prev_net_profit is not None:
+                net_profit_diff = net_profit - prev_net_profit
+                profit_loss_data.append((day, net_profit_diff))
+
+            prev_net_profit = net_profit
+
+    return profit_loss_data
+

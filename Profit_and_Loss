@@ -25,3 +25,17 @@ def read_profit_loss_data(file_path):
 
     return profit_loss_data
 
+def identify_scenario(profit_loss_data):
+    """
+    Identifies the scenario based on the trend of net profit.
+    Returns the scenario output.
+    """
+    increasing_trend = all(diff > 0 for _, diff in profit_loss_data)
+    decreasing_trend = all(diff < 0 for _, diff in profit_loss_data)
+
+    if increasing_trend:
+        return scenario_1(profit_loss_data)
+    elif decreasing_trend:
+        return scenario_2(profit_loss_data)
+    else:
+        return scenario_3(profit_loss_data)
